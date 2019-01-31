@@ -46,18 +46,18 @@ public class Locator {
      * @return the index in the array containing the position that is furthest north.
      */
     public static int farthestNorth(final double[] latitudes, final double[] longitudes, final boolean[] validLocations) {
+        double max = 0;
         for (i = 0; i < validLocations.length; i++) {
             if (validLocations[i] == true) {
-                double max = 0;
                 if (latitudes[i] > max) {
-                    max = latitudes[i]
+                    max = latitudes[i];
                 }
             }
         }
         if (max > 0 ) {
             return max;
         }   else {
-            return 0;
+            return -1;
         }
 
     }
