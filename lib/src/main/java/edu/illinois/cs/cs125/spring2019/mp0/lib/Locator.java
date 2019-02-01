@@ -83,7 +83,9 @@ public class Locator {
                 if (longitudes[i] == longitudes[currentIndex]
                         && latitudes[i] == latitudes[currentIndex]) {
                     if (i != currentIndex) {
-                        truth = true;
+                        if (validLocations[i]) {
+                            truth = true;
+                        }
                     }
                 }
             }
