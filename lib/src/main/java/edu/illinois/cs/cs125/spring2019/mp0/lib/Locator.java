@@ -79,10 +79,12 @@ public class Locator {
                             final boolean[] validLocations) {
         boolean truth = false;
         if (validLocations[currentIndex]) {
-            for (int i = 0; i < validLocations.length; i++) {
+            for (int i = 0; i < latitudes.length; i++) {
                 if (longitudes[i] == longitudes[currentIndex]
                         && latitudes[i] == latitudes[currentIndex]) {
-                    truth = true;
+                    if (i != currentIndex) {
+                        truth = true;
+                    }
                 }
             }
         }
