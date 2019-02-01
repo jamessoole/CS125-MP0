@@ -54,7 +54,7 @@ public class Locator {
                 if (latitudes[i] > max) {
                     max = latitudes[i];
                     if (max > 0) {
-                        return max;
+                        return (int) max;
                     }   else {
                         return -1;
                     }
