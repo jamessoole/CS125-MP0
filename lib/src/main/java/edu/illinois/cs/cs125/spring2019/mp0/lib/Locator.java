@@ -77,7 +77,16 @@ public class Locator {
     public static boolean beenHere(final int currentIndex,
                             final double[] latitudes, final double[] longitudes,
                             final boolean[] validLocations) {
-        return false;
+        boolean truth = false;
+        if (validLocations[currentIndex]) {
+            for (int i = 0; i < validLocations.length; i++) {
+                if (longitudes[i] == longitudes[currentIndex]
+                        && latitudes[i] == latitudes[currentIndex]) {
+                    truth = true;
+                }
+            }
+        }
+        return truth;
     }
 
     /**
