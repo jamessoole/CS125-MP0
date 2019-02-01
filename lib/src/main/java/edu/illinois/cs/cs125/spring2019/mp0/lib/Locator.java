@@ -1,6 +1,6 @@
 package edu.illinois.cs.cs125.spring2019.mp0.lib;
 
-//import java.util.Random;
+import java.util.Random;
 
 /**
  * A class that runs implements several helper functions on location data.
@@ -24,7 +24,7 @@ public class Locator {
     public static final double MIN_LONGITUDE = -180.0;
 
     /** Random number generator for use by this class. */
-//    private static Random random = new Random();
+    private static Random random = new Random();
 
     /**
      * Determine which of a set of positions is the furthest north.
@@ -46,24 +46,23 @@ public class Locator {
      * @param validLocations the array containing whether the location at an index is valid or not
      * @return the index in the array containing the position that is furthest north.
      */
-    public static double farthestNorth(final double[] latitudes, final double[] longitudes,
+    public static int farthestNorth(final double[] latitudes, final double[] longitudes,
                                     final boolean[] validLocations) {
         double max = MIN_LATITUDE;
         for (int i = 0; i < validLocations.length; i++) {
             if (validLocations[i]) {
                 if (latitudes[i] > max) {
                     max = latitudes[i];
+                    if (max > 0) {
+                        return (int) max;
+                    }
                 }
             }
         }
-        if (max > MIN_LATITUDE) {
-            return max;
-        } else {
-            return -1;
-        }
+        return -1;
+    }
 
-
-    /*
+    /**
      * Determine whether you've already been in this exact spot.
      * <p>
      * This function is passed the index of the current location along with arrays of latitude and longitude values,
@@ -76,23 +75,13 @@ public class Locator {
      * @param validLocations the array containing whether the location at an index is valid or not
      * @return true if the array contains another valid location equal to the current one
      */
- //   public static boolean beenHere(final int currentIndex,
- //                           final double[] latitudes, final double[] longitudes,
- //                           final boolean[] validLocations) {
-        //boolean beent = false;
-        //for (int i = 0; i < validLocations.length; i++) {
-        //    if (validLocations[currentIndex]) {
-       //         if (latitudes[currentIndex] == latitudes[i] && longitudes[currentIndex] == longitudes[i]) {
-        //            beent = true;
-        //        }
-//
-        //        }
-       //     }
-      //  }
-   //     return beent
-//  }
+    public static boolean beenHere(final int currentIndex,
+                            final double[] latitudes, final double[] longitudes,
+                            final boolean[] validLocations) {
+        return false;
+    }
 
-    /*
+    /**
      * Generate a new random location based on the current position and a transition probability.
      * <p>
      * This function is passed the latitude and longitude of the current position and a transition probability. With
@@ -115,15 +104,9 @@ public class Locator {
      * @return an array of two doubles with the first value equal the returned latitude and the second value equal to
      * the returned longitude
      */
-
-  //  public static double[] nextRandomLocation(final double currentLatitude, final double currentLongitude,
-    //                                   final double transitionProbability,
-  //                                     final double latitudeChange, final double longitudeChange) {
-//
-//
-//
-  //      return new double[] {0.0, 0.0};
-    //
-   //
-        // }
-    int z = 5;
+    public static double[] nextRandomLocation(final double currentLatitude, final double currentLongitude,
+                                       final double transitionProbability,
+                                       final double latitudeChange, final double longitudeChange) {
+        return new double[] {0.0, 0.0};
+    }
+}
