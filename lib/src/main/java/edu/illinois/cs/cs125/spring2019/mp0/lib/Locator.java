@@ -53,12 +53,14 @@ public class Locator {
             if (validLocations[i]) {
                 if (latitudes[i] > max) {
                     max = latitudes[i];
-                    if (max > 0) {
-                        return (int) max;
-                    }
                 }
             }
-        }   return -1;
+        }
+        if (max > MIN_LATITUDE) {
+            return (int) max;
+        }   else {
+            return -1;
+        }
     }
 
     /**
