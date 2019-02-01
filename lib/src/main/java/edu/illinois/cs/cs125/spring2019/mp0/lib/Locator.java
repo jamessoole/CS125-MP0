@@ -57,8 +57,6 @@ public class Locator {
                         return (int) max;
                     }
                 }
-            }   else {
-                return -1;
             }
         }
         return -1;
