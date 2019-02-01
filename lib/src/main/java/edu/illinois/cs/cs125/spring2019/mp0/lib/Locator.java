@@ -55,12 +55,13 @@ public class Locator {
                     max = latitudes[i];
                     if (max > 0) {
                         return (int) max;
-                    }   else {
-                        return -1;
                     }
                 }
+            }   else {
+                return -1;
             }
         }
+        return -1;
     }
 
     /**
