@@ -58,8 +58,7 @@ public class Locator {
                     }
                 }
             }
-        }
-        return -1;
+        }   return -1;
     }
 
     /**
