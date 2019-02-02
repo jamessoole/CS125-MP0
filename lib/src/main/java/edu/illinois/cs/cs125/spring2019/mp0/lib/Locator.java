@@ -82,8 +82,7 @@ public class Locator {
             for (int i = 0; i < latitudes.length; i++) {
                 if (longitudes[i] == longitudes[currentIndex]
                         && latitudes[i] == latitudes[currentIndex]) {
-                    if (i != currentIndex) {
-                        if (validLocations[i]) {
+                        if (validLocations[i] && i != currentIndex) {
                             truth = true;
                         }
                     }
@@ -119,6 +118,25 @@ public class Locator {
     public static double[] nextRandomLocation(final double currentLatitude, final double currentLongitude,
                                        final double transitionProbability,
                                        final double latitudeChange, final double longitudeChange) {
-        return new double[] {0.0, 0.0};
+        if (Math.random() <= transitionProbability) {
+            if (currentLatitude + latitudeChange >= MAX_LATITUDE) {
+                double newLatitude = MAX_LATITUDE;
+            } else if (currentLatitude + latitudeChange <= MIN_LATITUDE) {
+                double newLatitude = MIN_LATITUDE;
+            }   else {
+                double newLatitude = currentLatitude + latitudeChange;
+            }
+            if (currentLongitude + longitudeChange >= MAX_LONGITUDE) {
+                double newLongitude = MAX_LONGITUDE;
+            } else if (currentLongitude + longitudeChange <= MIN_LONGITUDE) {
+                double newLongitude = MIN_LONGITUDE;
+            }   else {
+                double newLongitude = currentLongitude + longitudeChange;
+            }
+            return new double[]{newLatitude, newLongitude};
+        }
+
+        else {
+            return new double[]{currentLatitude, currentLongitude};
+        }
     }
-}
