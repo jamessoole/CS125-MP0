@@ -315,14 +315,9 @@ public final class MainActivity extends FragmentActivity implements OnMapReadyCa
              */
             enableOrDisableLocation(setEnabled);
         });
+
         ((Button) findViewById(R.id.center)).setOnClickListener((setEnabled) -> {
-            /*
-             * So, for example, every time the user enables or disables location tracking using the "Start/Stop"
-             * button, this code runs. We receive some information about what happened: in this case, the variable
-             * setEnabled will be set to true if the toggle button is enabled (the user wants to enable location
-             * tracking) and false if the toggle button is disabled (the user wants to disable location tracking). We
-             * use that information to decide what to do.
-             */
+
             centerMap();
         });
 
