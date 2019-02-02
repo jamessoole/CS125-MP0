@@ -117,8 +117,8 @@ public class Locator {
                                        final double transitionProbability,
                                        final double latitudeChange, final double longitudeChange) {
         if (Math.random() <= transitionProbability) {
-            double newLatitude = 0;
-            double newLongitude = 0;
+            double newLatitude;
+            double newLongitude;
             if (currentLatitude + latitudeChange >= MAX_LATITUDE) {
                 newLatitude = MAX_LATITUDE;
             } else if (currentLatitude + latitudeChange <= MIN_LATITUDE) {
