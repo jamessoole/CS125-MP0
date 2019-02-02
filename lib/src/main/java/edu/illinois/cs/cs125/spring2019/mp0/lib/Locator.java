@@ -77,19 +77,17 @@ public class Locator {
     public static boolean beenHere(final int currentIndex,
                             final double[] latitudes, final double[] longitudes,
                             final boolean[] validLocations) {
-        boolean truth = false;
-        if (validLocations[currentIndex]) {
             for (int i = 0; i < latitudes.length; i++) {
-                if (longitudes[i] == longitudes[currentIndex]
-                        && latitudes[i] == latitudes[currentIndex]) {
-                        if (validLocations[i] && i != currentIndex) {
-                            truth = true;
+                if (validLocations[i]) {
+                    if (longitudes[i] == longitudes[currentIndex]
+                            && latitudes[i] == latitudes[currentIndex]) {
+                        if (i != currentIndex) {
+                            return true;
                         }
                     }
                 }
             }
-        }
-        return truth;
+            return false;
     }
 
     /**
@@ -123,20 +121,18 @@ public class Locator {
                 double newLatitude = MAX_LATITUDE;
             } else if (currentLatitude + latitudeChange <= MIN_LATITUDE) {
                 double newLatitude = MIN_LATITUDE;
-            }   else {
+            } else {
                 double newLatitude = currentLatitude + latitudeChange;
             }
             if (currentLongitude + longitudeChange >= MAX_LONGITUDE) {
                 double newLongitude = MAX_LONGITUDE;
             } else if (currentLongitude + longitudeChange <= MIN_LONGITUDE) {
                 double newLongitude = MIN_LONGITUDE;
-            }   else {
+            } else {
                 double newLongitude = currentLongitude + longitudeChange;
             }
             return new double[]{newLatitude, newLongitude};
-        }
-
-        else {
+        } else {
             return new double[]{currentLatitude, currentLongitude};
         }
     }
