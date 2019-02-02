@@ -77,17 +77,17 @@ public class Locator {
     public static boolean beenHere(final int currentIndex,
                             final double[] latitudes, final double[] longitudes,
                             final boolean[] validLocations) {
-            for (int i = 0; i < latitudes.length; i++) {
-                if (validLocations[i]) {
-                    if (longitudes[i] == longitudes[currentIndex]
+        for (int i = 0; i < latitudes.length; i++) {
+            if (validLocations[i]) {
+                if (longitudes[i] == longitudes[currentIndex]
                             && latitudes[i] == latitudes[currentIndex]) {
-                        if (i != currentIndex) {
-                            return true;
-                        }
+                    if (i != currentIndex) {
+                        return true;
                     }
                 }
             }
-            return false;
+        }
+        return false;
     }
 
     /**
@@ -117,22 +117,25 @@ public class Locator {
                                        final double transitionProbability,
                                        final double latitudeChange, final double longitudeChange) {
         if (Math.random() <= transitionProbability) {
+            double newLatitude = 0;
+            double newLongitude = 0;
             if (currentLatitude + latitudeChange >= MAX_LATITUDE) {
-                double newLatitude = MAX_LATITUDE;
+                newLatitude = MAX_LATITUDE;
             } else if (currentLatitude + latitudeChange <= MIN_LATITUDE) {
-                double newLatitude = MIN_LATITUDE;
+                newLatitude = MIN_LATITUDE;
             } else {
-                double newLatitude = currentLatitude + latitudeChange;
+                newLatitude = currentLatitude + latitudeChange;
             }
             if (currentLongitude + longitudeChange >= MAX_LONGITUDE) {
-                double newLongitude = MAX_LONGITUDE;
+                newLongitude = MAX_LONGITUDE;
             } else if (currentLongitude + longitudeChange <= MIN_LONGITUDE) {
-                double newLongitude = MIN_LONGITUDE;
+                newLongitude = MIN_LONGITUDE;
             } else {
-                double newLongitude = currentLongitude + longitudeChange;
+                newLongitude = currentLongitude + longitudeChange;
             }
             return new double[]{newLatitude, newLongitude};
         } else {
             return new double[]{currentLatitude, currentLongitude};
         }
     }
+}
